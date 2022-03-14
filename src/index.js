@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import AppHeader from "./AppHeader/AppHeader";
+import SearchPanel from "./SearchPanel/SearchPanel";
 const TodoList = () => {
   return (
     <ul>
@@ -8,12 +10,6 @@ const TodoList = () => {
       <li>Build Awesome App</li>
     </ul>
   );
-};
-const AppHeader = () => {
-  return <h1>My TODO List</h1>;
-};
-const SearchPanel = () => {
-  return <input placholder="search" />;
 };
 
 const App = () => {
