@@ -2,9 +2,9 @@ import React from "react";
 
 const TodoList = () => {
   return (
-    <ul>
-      <li>Learn React</li>
-      <li>Build Awesome App</li>
+    <ul className="list">
+      <li className="list-item">Learn React</li>
+      <li className="list-item">Build Awesome App</li>
     </ul>
   );
 };

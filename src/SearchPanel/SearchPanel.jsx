@@ -1,4 +1,4 @@
 const SearchPanel = () => {
-  return <input placholder="search" />;
+  return <input className="input" placholder="search" />;
 };
 export default SearchPanel;
