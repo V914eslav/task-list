@@ -1,8 +1,8 @@
 import React from "react";
 
-import AppHeader from "../AppHeader/AppHeader";
-import SearchPanel from "../SearchPanel/SearchPanel";
-import TodoList from "../TodoList/TodoList";
+import AppHeader from "../components/AppHeader/AppHeader";
+import SearchPanel from "../components/SearchPanel/SearchPanel";
+import TodoList from "../components/TodoList/TodoList";
 
 import styles from "./App.module.css";
 
