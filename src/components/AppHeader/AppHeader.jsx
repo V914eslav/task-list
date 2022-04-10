@@ -1,5 +1,16 @@
 import React from "react";
-const AppHeader = () => {
-  return <h1 className="header">My TODO List</h1>;
+
+import cn from "classnames";
+import styles from "./AppHeader.module.css";
+
+const AppHeader = ({ toDo, done }) => {
+  return (
+    <div className={cn("d-flex", styles["app-header"])}>
+      <h1>Todo List</h1>
+      <h2>
+        {toDo} more to do, {done} done
+      </h2>
+    </div>
+  );
 };
 export default AppHeader;
