@@ -4,8 +4,26 @@ import cn from "classnames";
 import styles from "./TodoListItem.module.css";
 
 export default class TodoListItem extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      done: false,
+    };
+    this.onLabelClick = () => {
+      this.setState({
+        done: true,
+      });
+    };
+  }
+
   render() {
     const { label, important = false } = this.props;
+    const { done } = this.state;
+    let classnames = cn(styles["todo-list-item"]);
+    if (done) {
+      classnames = cn(styles["todo-list-item"], styles["done"]);
+    }
 
     const style = {
       color: important ? "steelblue" : "black",
@@ -13,8 +31,12 @@ export default class TodoListItem extends Component {
     };
 
     return (
-      <span className={styles["todo-list-item"]}>
-        <span className={styles["todo-list-item-label"]} style={style}>
+      <span className={classnames}>
+        <span
+          className={styles["todo-list-item-label"]}
+          style={style}
+          onClick={this.onLabelClick}
+        >
           {label}
         </span>
 
