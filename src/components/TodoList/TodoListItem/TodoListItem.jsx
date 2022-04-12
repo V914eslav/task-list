@@ -27,7 +27,7 @@ export default class TodoListItem extends Component {
   }
 
   render() {
-    const { label } = this.props;
+    const { label, onDeleted } = this.props;
     const { done, important } = this.state;
     let classnames = cn(styles["todo-list-item"]);
     if (done) {
@@ -77,6 +77,7 @@ export default class TodoListItem extends Component {
             styles["float-right"],
             styles["button"]
           )}
+          onClick={onDeleted}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
