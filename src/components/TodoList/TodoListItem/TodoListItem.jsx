@@ -15,26 +15,28 @@ export default class TodoListItem extends Component {
         done: true,
       });
     };
+    this.onMarkImportant = () => {
+      this.setState({
+        important: true,
+      });
+    };
   }
 
   render() {
-    const { label, important = false } = this.props;
-    const { done } = this.state;
+    const { label } = this.props;
+    const { done, important } = this.state;
     let classnames = cn(styles["todo-list-item"]);
     if (done) {
       classnames = cn(styles["todo-list-item"], styles["done"]);
     }
-
-    const style = {
-      color: important ? "steelblue" : "black",
-      fontWeight: important ? "bold" : "normal",
-    };
+    if (important) {
+      classnames = cn(styles["todo-list-item"], styles["important"]);
+    }
 
     return (
       <span className={classnames}>
         <span
           className={styles["todo-list-item-label"]}
-          style={style}
           onClick={this.onLabelClick}
         >
           {label}
@@ -49,6 +51,7 @@ export default class TodoListItem extends Component {
             styles["float-right"],
             styles["button"]
           )}
+          onClick={this.onMarkImportant}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
