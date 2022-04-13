@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import AppHeader from "../AppHeader";
 import SearchPanel from "../SearchPanel";
 import TodoList from "../TodoList";
+import ItemAddForm from "../ItemAddForm";
 import ItemStatusFilter from "../ItemStatusFilter";
 
 import cn from "classnames";
@@ -32,6 +33,17 @@ export default class App extends Component {
         };
       });
     };
+    this.onAddItem = (text) => {
+      const { todoData } = this.state;
+      const id = todoData.length + 1;
+      this.setState(({ todoData }) => {
+        const newItem = { label: text, important: false, id: id };
+        const newArray = [...todoData, newItem];
+        return {
+          todoData: newArray,
+        };
+      });
+    };
   }
 
   render() {
@@ -47,6 +59,7 @@ export default class App extends Component {
           todoData={this.state.todoData}
           onDeleted={this.onDeleteItem}
         />
+        <ItemAddForm onAddItem={this.onAddItem} />
       </div>
     );
   }
