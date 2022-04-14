@@ -5,11 +5,25 @@ import TodoListItem from "./TodoListItem";
 import cn from "classnames";
 import styles from "./TodoList.module.css";
 
-const TodoList = ({ todoData, onDeleted }) => {
+const TodoList = ({
+  todoData,
+  onDeleted,
+  onToggleDone,
+  onToggleImportant,
+  done,
+  important,
+}) => {
   const elements = todoData.map(({ id, ...itemProps }) => {
     return (
       <li key={id} className={cn("list-group-item", styles.list)}>
-        <TodoListItem {...itemProps} onDeleted={() => onDeleted(id)} />
+        <TodoListItem
+          {...itemProps}
+          onDeleted={() => onDeleted(id)}
+          onToggleDone={() => onToggleDone(id)}
+          onToggleImportant={() => onToggleImportant(id)}
+          done={done}
+          important={important}
+        />
       </li>
     );
   });

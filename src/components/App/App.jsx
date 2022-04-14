@@ -18,6 +18,8 @@ export default class App extends Component {
         { label: "Make Awesome App", important: true, id: 2 },
         { label: "Have a lunch", important: false, id: 3 },
       ],
+      done: false,
+      important: false,
     };
     this.onDeleteItem = (id) => {
       this.setState(({ todoData }) => {
@@ -44,6 +46,12 @@ export default class App extends Component {
         };
       });
     };
+    this.onToggleDone = (id) => {
+      console.log("Done", id);
+    };
+    this.onToggleImportant = (id) => {
+      console.log("Important", id);
+    };
   }
 
   render() {
@@ -58,6 +66,10 @@ export default class App extends Component {
         <TodoList
           todoData={this.state.todoData}
           onDeleted={this.onDeleteItem}
+          onToggleDone={this.onToggleDone}
+          onToggleImportant={this.onToggleImportant}
+          done={this.state.done}
+          important={this.state.important}
         />
         <ItemAddForm onAddItem={this.onAddItem} />
       </div>

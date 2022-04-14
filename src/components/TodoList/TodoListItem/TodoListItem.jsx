@@ -6,30 +6,17 @@ import styles from "./TodoListItem.module.css";
 export default class TodoListItem extends Component {
   constructor() {
     super();
-
-    this.state = {
-      done: false,
-      important: false,
-    };
-    this.onLabelClick = () => {
-      this.setState(({ done }) => {
-        return {
-          done: !done,
-        };
-      });
-    };
-    this.onMarkImportant = () => {
-      this.setState(({ important }) => {
-        return {
-          important: !important,
-        };
-      });
-    };
   }
 
   render() {
-    const { label, onDeleted } = this.props;
-    const { done, important } = this.state;
+    const {
+      label,
+      onDeleted,
+      onToggleDone,
+      onToggleImportant,
+      done,
+      important,
+    } = this.props;
     let classnames = cn(styles["todo-list-item"]);
     if (done) {
       classnames = cn(styles["todo-list-item"], styles["done"]);
@@ -40,10 +27,7 @@ export default class TodoListItem extends Component {
 
     return (
       <span className={classnames}>
-        <span
-          className={styles["todo-list-item-label"]}
-          onClick={this.onLabelClick}
-        >
+        <span className={styles["todo-list-item-label"]} onClick={onToggleDone}>
           {label}
         </span>
 
@@ -56,7 +40,7 @@ export default class TodoListItem extends Component {
             styles["float-right"],
             styles["button"]
           )}
-          onClick={this.onMarkImportant}
+          onClick={onToggleImportant}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
