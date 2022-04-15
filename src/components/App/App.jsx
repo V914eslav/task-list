@@ -29,10 +29,7 @@ export default class App extends Component {
       // const after = todoData.slice(idx + 1, todoData.length - 1);
       // const after = todoData.slice(idx+1); две равные строки
 
-      const newArray = [
-        ...todoData.slice(0, idx),
-        ...todoData.slice(idx + 1, todoData.length),
-      ];
+      const newArray = [...todoData.slice(0, idx), ...todoData.slice(idx + 1)];
       return {
         todoData: newArray,
       };
@@ -57,32 +54,35 @@ export default class App extends Component {
       const newArray = [
         ...todoData.slice(0, idx),
         newItem,
-        ...todoData.slice(idx + 1, todoData.length),
+        ...todoData.slice(idx + 1),
       ];
-      console.log(id);
-      console.log(oldItem);
-      console.log(newItem);
-      console.log(newArray);
+
       return {
         todoData: newArray,
       };
     });
   };
   onToggleImportant = (id) => {
-    console.log("Important", id);
+    // console.log(id);
+    // console.log(oldItem);
+    // console.log(newItem);
+    // console.log(newArray);
   };
 
   render() {
+    const { todoData } = this.state;
+    const doneCount = todoData.filter((el) => el.done).length;
+    const todoCount = todoData.length - doneCount;
     return (
       <div className={cn("todo-app", styles.app)}>
-        <AppHeader toDo={1} done={3} />
+        <AppHeader toDo={todoCount} done={doneCount} />
         <div className="top-panel d-flex">
           <SearchPanel />
           <ItemStatusFilter />
         </div>
 
         <TodoList
-          todoData={this.state.todoData}
+          todoData={todoData}
           onDeleted={this.onDeleteItem}
           onToggleDone={this.onToggleDone}
           onToggleImportant={this.onToggleImportant}
