@@ -36,9 +36,9 @@ export default class App extends Component {
       };
     });
   };
-  onAddItem = (text) => {
+  onAddItem = (label) => {
     this.setState(({ todoData }) => {
-      const newItem = this.createTodoItem(text);
+      const newItem = this.createTodoItem(label);
       const newArray = [...todoData, newItem];
       return {
         todoData: newArray,
