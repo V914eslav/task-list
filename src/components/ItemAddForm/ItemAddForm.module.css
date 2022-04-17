@@ -4,3 +4,18 @@
 .item-add input {
   margin-right: 10px;
 }
+.item-add ::-webkit-input-placeholder {
+  padding-left: 10px;
+}
+:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+:focus::-moz-placeholder {
+  color: transparent;
+}
+:focus:-moz-placeholder {
+  color: transparent;
+}
+:focus:-ms-input-placeholder {
+  color: transparent;
+}
